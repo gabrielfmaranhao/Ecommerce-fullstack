@@ -6,6 +6,7 @@ export interface IProductsRequest {
     price: number
     isPromotion?: boolean
     image_url?: string
+    iventory: number
 }
 
 export interface IProductsResponse extends IProductsRequest {
