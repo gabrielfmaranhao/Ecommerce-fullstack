@@ -14,3 +14,11 @@ export interface IUsersResponse extends IUsersRequest {
     createdAt: Date
     updatedAt: Date
 }
+
+export interface IUserUpdateRequest {
+    name?: string
+    email?: string
+    password?: string
+    isAdm?: boolean
+    image_url?: string
+}
