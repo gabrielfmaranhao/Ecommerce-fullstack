@@ -22,7 +22,6 @@ export const listUserController = async(req: Request, res:Response) => {
         return res.status(201).json(list)
     
 }
-
 export const listIdUserController = async(req: Request, res:Response) => {
     try {
         const id : string = req.params.id;
@@ -34,7 +33,6 @@ export const listIdUserController = async(req: Request, res:Response) => {
         }
     }
 }
-
 export const updateUserController = async(req: Request, res:Response) => {
     try {
         const data: IUserUpdateRequest = req.body;
@@ -47,7 +45,6 @@ export const updateUserController = async(req: Request, res:Response) => {
         }
     }
 }
-
 export const deleteUserController = async(req: Request, res:Response) => {
     try {
         const id: string = req.params.id
