@@ -16,7 +16,7 @@ export const verifyAuthTokenMiddleware = (req: Request, res: Response, next: Nex
                 message: "Invalid token",
             });
         }
-        req.user = {adm: decode.adm, id: decode.id}
+        req.user = {adm: decode.isAdm, id: decode.id}
     })
     return next();
 }
