@@ -9,3 +9,8 @@ export interface ICategoriesResponse {
     createdAt: Date
     updatedAt: Date
 }
+
+export interface ICategorieUpdate {
+    name?: string
+    isActive?: boolean
+}
