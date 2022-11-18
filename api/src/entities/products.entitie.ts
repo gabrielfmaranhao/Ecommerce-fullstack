@@ -21,7 +21,7 @@ class Products {
     isActive: boolean
     @Column({type:"boolean", default: false})
     isPromotion: boolean
-    @Column({type:"varchar", length: 200, default:"https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.celladorales.com%2Fproduct%2Fshipping-box%2F&psig=AOvVaw3UHB0kQmL1i1RUpuODb4p5&ust=1668499707450000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCOiRyPWbrfsCFQAAAAAdAAAAABAE"})
+    @Column({type:"varchar", default:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZHVjdHxlbnwwfHwwfHw%3D&w=1000&q=80"})
     image_url: string
     @CreateDateColumn({type: "date"})
     createdAt: Date
