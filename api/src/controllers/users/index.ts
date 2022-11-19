@@ -19,14 +19,14 @@ export const createUserController = async(req: Request, res:Response) => {
 export const listUserController = async(req: Request, res:Response) => {
     
         const list = await listUserService()
-        return res.status(201).json(list)
+        return res.status(200).json(list)
     
 }
 export const listIdUserController = async(req: Request, res:Response) => {
     try {
         const id : string = req.params.id;
         const user = await listUserIdService(id);
-        return res.status(200).json({user});
+        return res.status(200).json(user);
     } catch (error) {
         if( error instanceof AppError) {
             return res.status(error.statusCode).json({status: error.statusCode, message: error.message})
@@ -38,7 +38,7 @@ export const updateUserController = async(req: Request, res:Response) => {
         const data: IUserUpdateRequest = req.body;
         const id: string = req.params.id;
         const user = await updateUserService(data, id);
-        return res.status(201).json({user})
+        return res.status(201).json(user)
     } catch (error) {
         if( error instanceof AppError) {
             return res.status(error.statusCode).json({status: error.statusCode, message: error.message})
@@ -49,7 +49,7 @@ export const deleteUserController = async(req: Request, res:Response) => {
     try {
         const id: string = req.params.id
         await deleteUserService(id)
-        return res.status(200).send("Usuário excluido!")
+        return res.status(200).json({})
     } catch (error) {
         if( error instanceof AppError) {
             return res.status(error.statusCode).json({status: error.statusCode, message: error.message})

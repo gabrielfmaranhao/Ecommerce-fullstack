@@ -11,6 +11,9 @@ export const createProductService = async (data:IProductsRequest):Promise<Produc
     if(!findCategorie) {
         throw new AppError("Categorie não exite", 400)
     }
+    if(findCategorie.isActive === false) {
+        throw new AppError("Categorie não exite", 400)
+    }
     const verifyBarCode = await productsRepository.findOneBy({bar_code: data.bar_code})
     const verifyModel =  await productsRepository.findOneBy({model: data.model})
     if(verifyBarCode) {
