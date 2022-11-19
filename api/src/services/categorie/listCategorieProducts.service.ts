@@ -10,7 +10,7 @@ export const listProductCategorieService = async (name:string):Promise<Products[
     if(!findCategorie) {
         throw new AppError("Categorie não existe", 400)
     }
-    if(!findCategorie.isActive) {
+    if(findCategorie.isActive === false) {
         throw new AppError("Categorie não existe", 400)
     }
     const findProducts = await productRepository.find({relations: {categorie:true}, where: { categorie: {id: findCategorie.id}}});

@@ -9,7 +9,7 @@ export const createCategorieController = async (req: Request, res: Response) => 
     try {
         const data = req.body;
         const categorie = await createCategorieService(data);
-        return res.status(200).json(categorie)
+        return res.status(201).json(categorie)
     } catch (error) {
         if( error instanceof AppError) {
             return res.status(error.statusCode).json({status: error.statusCode, message: error.message})
