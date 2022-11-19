@@ -1,6 +1,12 @@
-
+import { Global } from "./styles/global";
+import { RoutesComponent } from "./routes";
 function App() {
-  return <></>
+  return (
+    <>
+      <Global/>
+      <RoutesComponent/>
+    </>
+  )
   ;
 }
 
