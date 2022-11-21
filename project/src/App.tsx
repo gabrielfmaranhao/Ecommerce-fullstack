@@ -1,10 +1,13 @@
 import { Global } from "./styles/global";
 import { RoutesComponent } from "./routes";
+import { RoutesProvider } from "./contexts/sessionContext";
 function App() {
   return (
     <>
-      <Global/>
-      <RoutesComponent/>
+      <RoutesProvider>
+        <Global/>
+        <RoutesComponent/>
+      </RoutesProvider>
     </>
   )
   ;
