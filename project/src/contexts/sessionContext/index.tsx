@@ -2,18 +2,19 @@ import { createContext, useState } from "react";
 
 import { ReactNode } from "react"
 
-interface IChildrenProvider {
+export interface IChildrenProvider {
     children: ReactNode
 }
 interface test {
-    user: boolean | undefined
+    modal: boolean
+    setModal: React.Dispatch<React.SetStateAction<boolean>>
 }
 export const RoutesContext = createContext<test>({} as test);
 export const RoutesProvider = ({children}:IChildrenProvider) => {
-    const [ user, setUser] = useState<boolean>();
+    const [modal, setModal] = useState<boolean>(false);
     
     return (
-        <RoutesContext.Provider value={{ user}}>
+        <RoutesContext.Provider value={{modal, setModal}}>
             {children}
         </RoutesContext.Provider>
 
