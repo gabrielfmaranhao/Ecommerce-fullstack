@@ -13,7 +13,7 @@ const Session = () => {
         <Container>
             <div className="box">
                 <Logo h1_size={16} height={100} radius={8} width={200}/>
-                <Button b_color="white" color="red" height={25} width={120} name="Login" onClick={ () => navigate("login")}/>
+                <Button b_color="white" color="red" height={25} width={120} name="Login" onClick={ () => {navigate("login"); setModal(!modal)}}/>
                 <Link to ={"register"} onClick={()=> setModal(!modal)}>cadastre-se aqui</Link> 
             </div>
             {!modal ? <></> : 
