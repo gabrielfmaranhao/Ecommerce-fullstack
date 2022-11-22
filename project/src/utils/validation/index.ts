@@ -10,3 +10,8 @@ export const validationRegisterUser = yup.object().shape({
     .matches(/.{8,}/, "Deve conter ao menos 8 dígitos"),
     isAdm: yup.boolean().notRequired()
 })
+
+export const validationLoginUser = yup.object().shape({
+    email: yup.string().email().required("Campo email obrigatório"),
+    password: yup.string().required("")
+})

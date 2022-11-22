@@ -20,7 +20,7 @@ const Register = () => {
     const { register, handleSubmit, formState:{errors}} = useForm<IRegisterUser>({resolver:yupResolver(validationRegisterUser)})
     const {setModal, modal} = useContext(RoutesContext)
     const navigate = useNavigate()
-    const onSubmit = (data:any) => {
+    const onSubmit = (data:IRegisterUser) => {
         api.post("/user",data).then((value) => console.log(value)).catch((error)=> console.log(error))
     }
     return(
