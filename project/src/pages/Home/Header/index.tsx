@@ -2,19 +2,19 @@ import Search from "./Search"
 import Cart from "./Cart"
 import Logo from "../../../components/Logo"
 import Avatar from "./Avatar"
-import { Container } from "./style"
+import { Container, Box, DivAvatar } from "./style"
 const Header =  () => {
     
     
     return(
         <Container>
-            <div className="box">
+            <Box>
                 <Logo h1_size={12} height={30} radius={8} width={100}/> 
-                <div className="avatar">
+                <DivAvatar>
                     <Cart/>
                     <Avatar/>
-                </div>
-            </div>
+                </DivAvatar>
+            </Box>
             <Search/>
         </Container>
     )
