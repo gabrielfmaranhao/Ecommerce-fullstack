@@ -11,7 +11,6 @@ interface test {
     setModal: React.Dispatch<React.SetStateAction<boolean>>
     user: IUser | undefined
     singIn: (data: ILoginUser) => void
-    products: IProduct[] | undefined | any
 }
 interface IUser {
     id: string
@@ -56,7 +55,6 @@ export const RoutesContext = createContext<test>({} as test);
 export const RoutesProvider = ({children}:IChildrenProvider) => {
     const [modal, setModal] = useState<boolean>(false);
     const [user, setUser] = useState<IUser>();
-    const [products, setProducts] = useState<IProduct[] | undefined >([])
 
     const singIn = async (data:ILoginUser) => {
         localStorage.clear()
@@ -76,13 +74,9 @@ export const RoutesProvider = ({children}:IChildrenProvider) => {
             }
         }
         loadUser()
-        async function products() {
-            await api.get("/product").then((value)=> setProducts(value.data)).catch((error)=> console.log(error))
-        };
-        products()
-    },[])
+    })
     return (
-        <RoutesContext.Provider value={{modal, setModal, user, singIn, products}}>
+        <RoutesContext.Provider value={{modal, setModal, user, singIn}}>
             {children}
         </RoutesContext.Provider>
 

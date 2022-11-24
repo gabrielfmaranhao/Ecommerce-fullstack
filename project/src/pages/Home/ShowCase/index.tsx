@@ -1,17 +1,17 @@
-import { IChildrenProvider, RoutesContext } from "../../../contexts/sessionContext"
-import { IProduct } from "../../../contexts/sessionContext"
+import { IChildrenProvider} from "../../../contexts/sessionContext"
+import { Container, ContainerShowcase } from "./style"
 const ShowCase = ({children}:IChildrenProvider) => {
 
     return(
-        <div className="container">
-            <main className="containerVitrine">
+        <Container>
+            <ContainerShowcase>
                 <div>
                     <ul className="ul">
                         {children}
                     </ul>
                 </div>
-            </main>
-        </div>
+            </ContainerShowcase>
+        </Container>
     )
 }
 export default ShowCase
