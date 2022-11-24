@@ -5,7 +5,7 @@ import { createUserSerializer, updateUserSerializer } from "../serializers";
 
 export const userRoutes = Router();
 userRoutes.get("",verifyAuthTokenMiddleware, verifyIsAdmMiddleware,listUserController) 
-userRoutes.get("/profile", verifyAuthTokenMiddleware, profileUserController)   
+userRoutes.get("/profile/me", verifyAuthTokenMiddleware, profileUserController)   
 userRoutes.get("/:id", verifyAuthTokenMiddleware, verifyIsAdmMiddleware, listIdUserController)
 userRoutes.post("", serializerMiddleware(createUserSerializer), createUserController)  
 userRoutes.patch("/:id", verifyAuthTokenMiddleware ,serializerMiddleware(updateUserSerializer), updateUserController)  

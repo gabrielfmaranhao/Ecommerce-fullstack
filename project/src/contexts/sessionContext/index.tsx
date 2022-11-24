@@ -66,7 +66,7 @@ export const RoutesProvider = ({children}:IChildrenProvider) => {
             const token = localStorage.getItem("@Ecommerce:token");
             if(token) {
                 try {
-                    const { data } = await api.get("/user/profile")
+                    const { data } = await api.get("/user/profile/me")
                     setUser(data);
                 } catch (error) {
                     console.error(error)
