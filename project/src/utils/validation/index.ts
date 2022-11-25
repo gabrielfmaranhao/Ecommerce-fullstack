@@ -15,3 +15,11 @@ export const validationLoginUser = yup.object().shape({
     email: yup.string().email().required("Campo email obrigatório"),
     password: yup.string().required("")
 })
+
+export const validationAddProduct = yup.object().shape({
+    name: yup.string().required("Campo name obrigatório"),
+    model: yup.string().required("Campo model obrigatório"),
+    bar_code: yup.string().required("Campo bar code obrigatório").length(13),
+    price: yup.number().required("Campo price obrigatório"),
+    iventory: yup.number().required("Campo iventory obrigatório")
+})
