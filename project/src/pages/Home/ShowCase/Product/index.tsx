@@ -1,10 +1,10 @@
 import { useContext } from "react"
 import { Button } from "../../../../components/Form/Button"
 import { ProductsContext } from "../../../../contexts/productsContext"
-import { IProduct } from "../../../../contexts/sessionContext"
+import { IProduct } from "../../../../contexts/productsContext"
 import { Card } from "./style"
 const Product = () => {
-    const {products} = useContext(ProductsContext)
+    const {products, addCart} = useContext(ProductsContext)
     const list = products.filter((product:IProduct)=> product.isActive)
     return(
         <>
@@ -20,7 +20,7 @@ const Product = () => {
                         { product.description ? product.description : "Produto sem descrição"}
                 </p>
                 <span>Estoque: {product.iventory}</span>
-                <Button b_color="red" color="white" name="Adicionar ao carrinho" height={40} width={200}/>
+                <Button b_color="red" color="white" name="Adicionar ao carrinho" height={40} width={200} onClick={()=> addCart(product)}/>
             </Card>
             )}
         </>
