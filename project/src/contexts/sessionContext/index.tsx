@@ -43,7 +43,7 @@ export const RoutesProvider = ({children}:IChildrenProvider) => {
     const navigate = useNavigate();
     const singIn = async (data:ILoginUser) => {
         localStorage.clear()
-        await api.post("/login",data).then((value) => {localStorage.setItem("@Ecommerce:token",value.data.token); navigate("/home") }).catch((error)=> console.log(error))
+        await api.post("/login",data).then((value) => {localStorage.setItem("@Ecommerce:token",value.data.token); navigate("/") }).catch((error)=> console.log(error))
     }
 
     const registerUser = async(data:IRegisterUser) => {
@@ -65,7 +65,7 @@ export const RoutesProvider = ({children}:IChildrenProvider) => {
             }
         }
         loadUser()
-    })
+    },[])
     return (
         <RoutesContext.Provider value={{modal, setModal, user, singIn, registerUser}}>
             {children}
