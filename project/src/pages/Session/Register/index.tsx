@@ -5,7 +5,6 @@ import { useForm } from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import { validationRegisterUser } from "../../../utils/validation"
 import Input from "../../../components/Form/Input"
-import api from "../../../services"
 import { useContext } from "react"
 import { RoutesContext } from "../../../contexts/sessionContext"
 import { useNavigate } from "react-router-dom"
@@ -18,13 +17,10 @@ interface IRegisterUser {
 }
 const Register = () => {
     const { register, handleSubmit, formState:{errors}} = useForm<IRegisterUser>({resolver:yupResolver(validationRegisterUser)})
-    const {setModal, modal} = useContext(RoutesContext)
+    const {setModal, modal, registerUser} = useContext(RoutesContext)
     const navigate = useNavigate()
-    const onSubmit = (data:IRegisterUser) => {
-        api.post("/user",data).then((value) => console.log(value)).catch((error)=> console.log(error))
-    }
     return(
-    <Form text="Formulário de cadastro" handleSubmit={handleSubmit(onSubmit)} onClick={ ()=> {setModal(!modal); navigate("/session")}}>
+    <Form text="Formulário de cadastro" handleSubmit={handleSubmit(registerUser)} onClick={ ()=> {setModal(!modal); navigate("/session")}}>
         <Label html="name" text="name"/>
         <Input height={30} width={40} register={{...register("name")}} type="text" placeholder="name"/>
         <span>{errors.name?.message}</span>
