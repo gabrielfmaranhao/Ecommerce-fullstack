@@ -5,8 +5,8 @@ import { AiOutlineClose } from "react-icons/ai"
 interface IFormProps extends FormHTMLAttributes<HTMLFormElement> {
     children: React.ReactNode 
     text: string
-    handleSubmit: any
-    onClick: () => void
+    handleSubmit?: any
+    onClick?: () => void
 }
 const Form  = ({children, text, handleSubmit, onClick}:IFormProps) => {
     return(
