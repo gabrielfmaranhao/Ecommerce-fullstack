@@ -3,7 +3,6 @@ import api from "../../services";
 import { IChildrenProvider } from "../sessionContext";
 
 interface IPropsProduct {
-
     products: IProduct[]
     setProducts: React.Dispatch<React.SetStateAction<IProduct[]>>
     categorie: ICategorie[]
@@ -12,7 +11,6 @@ interface IPropsProduct {
     cart: IProductCart[]
     setCart: React.Dispatch<React.SetStateAction<IProductCart[]>>
     removeCart: (id:number) => void
-
 }
 
 interface ICategorie {

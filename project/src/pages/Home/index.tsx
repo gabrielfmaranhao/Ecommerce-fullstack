@@ -13,6 +13,9 @@ import { yupResolver } from "@hookform/resolvers/yup"
 import { validationAddProduct } from "../../utils/validation"
 import { ProductsContext } from "../../contexts/productsContext"
 import { Button } from "../../components/Form/Button"
+import Carts from "./CartP"
+import EmptyCart from "./CartP/emptyCart"
+import Cart from "./CartP/Cart"
 
 
 interface IAddProduct {
@@ -29,9 +32,7 @@ interface IAddProduct {
 const Home = () => {
     const {modal, setModal} = useContext(RoutesContext)
     const { register, handleSubmit, formState:{errors}} = useForm<IAddProduct>({resolver:yupResolver(validationAddProduct)});
-    const { categorie, addProduct} = useContext(ProductsContext);
-    
-    
+    const { categorie, addProduct, cart} = useContext(ProductsContext);
     return (
         <>  
             {modal ?
@@ -64,6 +65,9 @@ const Home = () => {
             <ShowCase>
                 <Product/>
             </ShowCase>
+            <Carts>
+                {cart.length === 0 ? <EmptyCart/>:<Cart/>}
+            </Carts>
         </>
     )
 }
