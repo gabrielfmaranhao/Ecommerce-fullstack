@@ -1,13 +1,8 @@
-import { FormHTMLAttributes } from "react"
+import { IFormProps } from "../../interfaces/components"
 import { Container } from "./style"
 import { AiOutlineClose } from "react-icons/ai"
 
-interface IFormProps extends FormHTMLAttributes<HTMLFormElement> {
-    children: React.ReactNode 
-    text: string
-    handleSubmit?: any
-    onClick?: () => void
-}
+
 const Form  = ({children, text, handleSubmit, onClick}:IFormProps) => {
     return(
         <Container>

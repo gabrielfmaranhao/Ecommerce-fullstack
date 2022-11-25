@@ -1,10 +1,4 @@
-import { InputHTMLAttributes } from "react"
-
-export interface IInputProps extends InputHTMLAttributes<HTMLInputElement>  {
-    width: number;
-    height: number;
-    register: any
-}
+import { IInputProps } from "../../../interfaces/components"
 const Input = ({type, placeholder, height, width, register}:IInputProps) => {
     return(
         <input type={type} placeholder={placeholder} width={width} height={height} {...register}/>

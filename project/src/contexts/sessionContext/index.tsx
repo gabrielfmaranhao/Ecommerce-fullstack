@@ -1,40 +1,8 @@
 import { createContext, useEffect, useState } from "react";
-
-import { ReactNode } from "react"
 import { useNavigate } from "react-router-dom";
+import { IChildrenProvider, ISessionProps, IUser, ILoginUser, IRegisterUser } from "../../interfaces/contexts";
 import api from "../../services";
 
-export interface IChildrenProvider {
-    children: ReactNode
-}
-interface ISessionProps {
-    modal: boolean
-    setModal: React.Dispatch<React.SetStateAction<boolean>>
-    user: IUser | undefined
-    singIn: (data: ILoginUser) => void
-    registerUser: (data: IRegisterUser) => void
-}
-interface IUser {
-    id: string
-    name: string
-    email: string
-    password: string
-    isActive: boolean
-    isAdm: boolean
-    image_url: string
-    createdAt: string
-    updatedAt: string
-}
-interface ILoginUser {
-    email: string
-    password: string
-}
-interface IRegisterUser {
-    name: string
-    email: string
-    password: string
-    isAdm: string
-}
 
 export const RoutesContext = createContext<ISessionProps>({} as ISessionProps);
 export const RoutesProvider = ({children}:IChildrenProvider) => {

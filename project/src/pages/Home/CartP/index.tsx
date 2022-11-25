@@ -1,4 +1,4 @@
-import { IChildrenProvider } from "../../../contexts/sessionContext";
+import { IChildrenProvider } from "../../../interfaces/contexts";
 import { Container, DivContent, DivTexto } from "./style";
 
 const Carts = ({children}:IChildrenProvider) => {

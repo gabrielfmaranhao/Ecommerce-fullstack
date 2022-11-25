@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { IInputProps } from ".";
+import { IInputProps } from "../../../interfaces/components";
 
 
 export const Input = styled.input`

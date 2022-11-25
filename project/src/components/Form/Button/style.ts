@@ -1,19 +1,13 @@
 import styled from "styled-components";
-
-export interface IButtonSProps {
-    width: number,
-    height: number,
-    b_color: "white" | "black" | "red"
-    color: "white" | "black" | "red"
-}
+import { IButtonProps } from "../../../interfaces/components";
 
 export const ButtonStyle = styled.button`
     font-family: 'Poppins';
     border-radius: 3px;
     border: none;
     color: ${({color})=> `var(--${color})`};
-    width: ${({width} :IButtonSProps) => `${width}px`};
-    height: ${({height} :IButtonSProps) => `${height}px`};
-    background-color: ${({b_color} :IButtonSProps) => `var(--${b_color})`}
+    width: ${({width} :IButtonProps) => `${width}px`};
+    height: ${({height} :IButtonProps) => `${height}px`};
+    background-color: ${({b_color} :IButtonProps) => `var(--${b_color})`}
 
 `

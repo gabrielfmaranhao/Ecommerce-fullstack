@@ -1,8 +1,5 @@
+import { ILabelProps } from "../../../interfaces/components"
 
-interface ILabelProps {
-    text: string
-    html: string
-}
 const Label = ({text, html}:ILabelProps) => {
     return <label htmlFor={html}>{text}</label>
     
