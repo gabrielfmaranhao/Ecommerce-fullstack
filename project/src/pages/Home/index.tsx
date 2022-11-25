@@ -1,3 +1,4 @@
+
 import { useContext } from "react"
 import Modal from "../../components/Modal"
 import { RoutesContext } from "../../contexts/sessionContext"
@@ -67,4 +68,6 @@ const Home = () => {
     )
 }
 
-export default Home
+
+
+export default Home;

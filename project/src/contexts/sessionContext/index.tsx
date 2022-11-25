@@ -1,16 +1,18 @@
 import { createContext, useEffect, useState } from "react";
 
 import { ReactNode } from "react"
+import { useNavigate } from "react-router-dom";
 import api from "../../services";
 
 export interface IChildrenProvider {
     children: ReactNode
 }
-interface test {
+interface ISessionProps {
     modal: boolean
     setModal: React.Dispatch<React.SetStateAction<boolean>>
     user: IUser | undefined
     singIn: (data: ILoginUser) => void
+    registerUser: (data: IRegisterUser) => void
 }
 interface IUser {
     id: string
@@ -27,38 +29,27 @@ interface ILoginUser {
     email: string
     password: string
 }
-
-interface ICategorie {
+interface IRegisterUser {
     name: string
-    id: string
-    isActive: boolean
-    createdAt: string
-    updatedAt: string
+    email: string
+    password: string
+    isAdm: string
 }
-export interface IProduct {
-    name: string
-    model: string
-    bar_code: string
-    description?: string
-    price: number
-    iventory: number
-    isPromotion: boolean
-    categorie: ICategorie
-    id: string
-    isActive: boolean
-    image_url: string
-    createdAt: string
-    updatedAt: string
 
-}
-export const RoutesContext = createContext<test>({} as test);
+export const RoutesContext = createContext<ISessionProps>({} as ISessionProps);
 export const RoutesProvider = ({children}:IChildrenProvider) => {
     const [modal, setModal] = useState<boolean>(false);
     const [user, setUser] = useState<IUser>();
-
+    const navigate = useNavigate();
     const singIn = async (data:ILoginUser) => {
         localStorage.clear()
-        await api.post("/login",data).then((value) => {localStorage.setItem("@Ecommerce:token",value.data.token)}).catch((error)=> console.log(error))
+        await api.post("/login",data).then((value) => {localStorage.setItem("@Ecommerce:token",value.data.token); navigate("/home") }).catch((error)=> console.log(error))
+    }
+
+    const registerUser = async(data:IRegisterUser) => {
+        await api.post("/user",data)
+        .then(() => navigate("/session"))
+        .catch((error)=> console.log(error))
     }
     
     useEffect( () => {
@@ -76,7 +67,7 @@ export const RoutesProvider = ({children}:IChildrenProvider) => {
         loadUser()
     })
     return (
-        <RoutesContext.Provider value={{modal, setModal, user, singIn}}>
+        <RoutesContext.Provider value={{modal, setModal, user, singIn, registerUser}}>
             {children}
         </RoutesContext.Provider>
 
