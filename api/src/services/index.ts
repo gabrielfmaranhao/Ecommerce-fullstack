@@ -15,8 +15,9 @@ import { listProductService } from "./product/listProduct.service";
 import { updateProductService } from "./product/updateIventory.service";
 import { updateIventoryProductService } from "./product/updateProduct.service";
 import { deleteProductService } from "./product/deleteProduct.service";
+import { profileUserService } from "./users/profileUser.service";
 
-export { createUserService, listUserService, deleteUserService, listUserIdService, updateUserService}
+export { createUserService, listUserService, deleteUserService, listUserIdService, updateUserService, profileUserService}
 export { sessionLoginService }
 export { createCategorieService, deleteCategorieService, listCategorieService, listProductCategorieService, updateCategorieService}
 export { createProductService, deleteProductService, listProductIdService, listProductService, updateIventoryProductService, updateProductService}
