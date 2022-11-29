@@ -1,0 +1,15 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.updateProductSerializer = exports.updateIventoryProductSerializer = exports.createProductSerializer = exports.updateCategorieSerializer = exports.createCategorieSerializer = exports.sessionLoginSerializer = exports.updateUserSerializer = exports.createUserSerializer = void 0;
+const users_1 = require("./users");
+Object.defineProperty(exports, "createUserSerializer", { enumerable: true, get: function () { return users_1.createUserSerializer; } });
+Object.defineProperty(exports, "updateUserSerializer", { enumerable: true, get: function () { return users_1.updateUserSerializer; } });
+const session_1 = require("./session");
+Object.defineProperty(exports, "sessionLoginSerializer", { enumerable: true, get: function () { return session_1.sessionLoginSerializer; } });
+const categorie_1 = require("./categorie");
+Object.defineProperty(exports, "createCategorieSerializer", { enumerable: true, get: function () { return categorie_1.createCategorieSerializer; } });
+Object.defineProperty(exports, "updateCategorieSerializer", { enumerable: true, get: function () { return categorie_1.updateCategorieSerializer; } });
+const product_1 = require("./product");
+Object.defineProperty(exports, "createProductSerializer", { enumerable: true, get: function () { return product_1.createProductSerializer; } });
+Object.defineProperty(exports, "updateProductSerializer", { enumerable: true, get: function () { return product_1.updateProductSerializer; } });
+Object.defineProperty(exports, "updateIventoryProductSerializer", { enumerable: true, get: function () { return product_1.updateIventoryProductSerializer; } });

@@ -1,0 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.userRoutes = void 0;
+const express_1 = require("express");
+const controllers_1 = require("../controllers");
+const middlewares_1 = require("../middlewares");
+const serializers_1 = require("../serializers");
+exports.userRoutes = (0, express_1.Router)();
+exports.userRoutes.get("", middlewares_1.verifyAuthTokenMiddleware, middlewares_1.verifyIsAdmMiddleware, controllers_1.listUserController);
+exports.userRoutes.get("/profile/me", middlewares_1.verifyAuthTokenMiddleware, controllers_1.profileUserController);
+exports.userRoutes.get("/:id", middlewares_1.verifyAuthTokenMiddleware, middlewares_1.verifyIsAdmMiddleware, controllers_1.listIdUserController);
+exports.userRoutes.post("", (0, middlewares_1.serializerMiddleware)(serializers_1.createUserSerializer), controllers_1.createUserController);
+exports.userRoutes.patch("/:id", middlewares_1.verifyAuthTokenMiddleware, (0, middlewares_1.serializerMiddleware)(serializers_1.updateUserSerializer), controllers_1.updateUserController);
+exports.userRoutes.delete("/:id", middlewares_1.verifyAuthTokenMiddleware, middlewares_1.verifyIsAdmMiddleware, controllers_1.deleteUserController);
