@@ -11,7 +11,7 @@ const AppDataSource = process.env.NODE_ENV === "test" ?
     new DataSource({
         type: "postgres",
         url: process.env.DATABASE_URL,
-        ssl: process.env.NODE_ENV === "production" ? { rejectUnauthorized: false} : false,
+        ssl: true,
         logging: true,
         synchronize: false,
         entities: process.env.NODE_ENV === "production" ? ["dist/src/entities/*.js"] : ["src/entities/*.ts"],
