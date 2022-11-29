@@ -53,6 +53,10 @@ const Home = () => {
                     <Label text="iventory" html="iventory"/>
                     <Input height={20} width={200} placeholder="iventory product" id="iventory" register={{...register("iventory")}} type="number"/>
                     <span>{errors.iventory?.message}</span>
+                    <Label text="Description" html="description"/>
+                    <Input height={20} width={200} placeholder="Description product" id="description" register={{...register("description")}} type="text"/>
+                    <Label text="image_url" html="image_url"/>
+                    <Input height={20} width={200} placeholder="image_url product" id="image_url" register={{...register("image_url")}} type="url"/>
                     <select {...register("categorie_name")}>
                         {categorie.map((value) => {
                             return <option key={value.id} value={value.name}>{value.name}</option>
