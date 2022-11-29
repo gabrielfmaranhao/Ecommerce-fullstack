@@ -1,4 +1,4 @@
-import { IChildrenProvider } from "../../contexts/sessionContext"
+import { IChildrenProvider } from "../../interfaces/contexts"
 import { Container } from "./style"
 const Modal = ({children}:IChildrenProvider) => {
     return (

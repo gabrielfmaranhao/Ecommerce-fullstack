@@ -14,7 +14,7 @@ const Avatar = () => {
             </ContainerButton>
         )
     }
-    else if (!user.isActive) {
+    else if (!user.isAdm) {
         return(
             <ContainerButton>
             <ImageUser src={user.image_url} alt="imagem-user" />

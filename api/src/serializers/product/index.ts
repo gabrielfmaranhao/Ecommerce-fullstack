@@ -7,7 +7,12 @@ export const createProductSerializer = yup.object().shape({
     description: yup.string().notRequired(),
     price: yup.number().required(" price é um campo obrigatório"),
     isPromotion: yup.boolean().notRequired().default(false),
-    image_url: yup.string().url().notRequired() ,
+    image_url: yup.string().url().notRequired().transform((value, originalValue) => {
+        if(originalValue === "") {
+            value = "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZHVjdHxlbnwwfHwwfHw%3D&w=1000&q=80"
+            return value
+        }
+    }) ,
     iventory: yup.number().required("iventory é um campo obrigatótio").integer("Numero tem que ser inteiro"),
     categorie_name: yup.string().required("categorie_name é um campo obrigatório"),
 })

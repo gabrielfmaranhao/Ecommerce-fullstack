@@ -21,5 +21,7 @@ export const validationAddProduct = yup.object().shape({
     model: yup.string().required("Campo model obrigatório"),
     bar_code: yup.string().required("Campo bar code obrigatório").length(13),
     price: yup.number().required("Campo price obrigatório"),
-    iventory: yup.number().required("Campo iventory obrigatório")
+    iventory: yup.number().required("Campo iventory obrigatório"),
+    description: yup.string().notRequired(),
+    image_url: yup.string().url().notRequired()
 })
