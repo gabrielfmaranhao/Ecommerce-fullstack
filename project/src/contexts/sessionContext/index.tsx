@@ -11,42 +11,19 @@ export const RoutesProvider = ({children}:IChildrenProvider) => {
     const navigate = useNavigate();
 
 
-    async function name1 (data:ILoginUser) {
-        localStorage.clear()
+    
+    const singIn = async (data:ILoginUser) => {
         try {
             const response = await api.post("/login", data)
             localStorage.setItem("@Ecommerce:token", response.data.token)
+            const { data:res } = await api.get("/user/profile/me")
+            setUser(res)
+            setModal(false)
+            navigate("")
         } catch (error) {
             console.log(error)
         }
-    }
-
-    async function name2() {
-        try {
-            const { data } = await api.get("/user/profile/me")
-            setUser(data)
-            
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
-
-
-    
-    const singIn = async (data:ILoginUser) => {
-        // localStorage.clear()
-        // try {
-        //     const response = await api.post("/login", data)
-        //     localStorage.setItem("@Ecommerce:token", response.data.token)
-        //     const { data:res } = await api.get("/user/profile/me")
-        //     console.log(res)
-        //     setUser(res);
-        // } catch (error) {
-        //     console.log(error)
-        // }
-        await name1(data)
-        await name2()
+        
     }
 
     const registerUser = async(data:IRegisterUser) => {
@@ -55,7 +32,7 @@ export const RoutesProvider = ({children}:IChildrenProvider) => {
         .catch((error)=> console.log(error))
     }
     
-    useEffect( () => {
+    useEffect(() => {
         async function loadUser() {
             const token = localStorage.getItem("@Ecommerce:token");
             if(token) {
@@ -68,7 +45,7 @@ export const RoutesProvider = ({children}:IChildrenProvider) => {
             }
         }
         loadUser()
-    },[])
+    },[user])
     return (
         <RoutesContext.Provider value={{modal, setModal, user, singIn, registerUser}}>
             {children}

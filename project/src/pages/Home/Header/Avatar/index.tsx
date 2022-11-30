@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { ProductsContext } from "../../../../contexts/productsContext"
 import { RoutesContext } from "../../../../contexts/sessionContext"
@@ -30,9 +30,8 @@ const Avatar = () => {
     }
     else {
         return(
-                    
-
-                <ContainerButton onClick={()=> setModalProduct(!modalProduct)}>
+            
+                <ContainerButton onClick={() => setModalProduct(!modalProduct)}>
                     <ImageUser src={user.image_url} alt="imagem-user" />
                 </ContainerButton>
             
