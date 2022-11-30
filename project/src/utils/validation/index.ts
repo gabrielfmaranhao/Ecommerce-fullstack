@@ -23,5 +23,10 @@ export const validationAddProduct = yup.object().shape({
     price: yup.number().required("Campo price obrigatório"),
     iventory: yup.number().required("Campo iventory obrigatório"),
     description: yup.string().notRequired(),
-    image_url: yup.string().url().notRequired()
+    image_url: yup.string().url().notRequired().transform((value, originalValue) => {
+        if(originalValue === "") {
+            value = "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZHVjdHxlbnwwfHwwfHw%3D&w=1000&q=80"
+            return value
+        }
+    })
 })

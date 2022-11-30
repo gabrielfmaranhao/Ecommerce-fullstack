@@ -1,7 +1,6 @@
 
 import { useContext } from "react"
 import Modal from "../../components/Modal"
-import { RoutesContext } from "../../contexts/sessionContext"
 import Header from "./Header"
 import ShowCase from "./ShowCase"
 import Product from "./ShowCase/Product"
@@ -16,28 +15,18 @@ import { Button } from "../../components/Form/Button"
 import Carts from "./CartP"
 import EmptyCart from "./CartP/emptyCart"
 import Cart from "./CartP/Cart"
-
-
-interface IAddProduct {
-    name: string
-    model: string
-    bar_code: string
-    price: number
-    iventory: number
-    categorie_name: string
-    description?: string
-    image_url?:string
-}
+import { IAddProduct } from "../../interfaces/contexts"
+import { motion } from "framer-motion"
 
 const Home = () => {
-    const {modal, setModal} = useContext(RoutesContext)
+    const {modalProduct, setModalProduct} = useContext(ProductsContext)
     const { register, handleSubmit, formState:{errors}} = useForm<IAddProduct>({resolver:yupResolver(validationAddProduct)});
     const { categorie, addProduct, cart} = useContext(ProductsContext);
     return (
         <>  
-            {modal ?
+            {modalProduct ?
             <Modal>
-                <Form text="Add product" handleSubmit={handleSubmit(addProduct)} onClick={() => setModal(!modal)} >
+                <Form text="Add product" handleSubmit={handleSubmit(addProduct)} onClick={() => setModalProduct(!modalProduct)} >
                     <Label text="Name" html="name"/>
                     <Input height={20} width={200} placeholder="name product" id="name" register={{...register("name")}}/>
                     <span>{errors.name?.message}</span>
@@ -65,6 +54,8 @@ const Home = () => {
                     <Button b_color="red" color="white" height={40} width={200} name={"Enviar"}/>
                 </Form>
             </Modal>:<></>}
+            
+
             <Header/>
             <ShowCase>
                 <Product/>
@@ -72,6 +63,7 @@ const Home = () => {
             <Carts>
                 {cart.length === 0 ? <EmptyCart/>:<Cart/>}
             </Carts>
+            
         </>
     )
 }
