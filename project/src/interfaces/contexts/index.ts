@@ -1,4 +1,4 @@
-import { ReactNode } from "react"
+import React, { ReactNode } from "react"
 export interface ICategorie {
     name: string
     id: string
@@ -35,6 +35,18 @@ export interface IAddProduct {
     image_url?: string
     categorie_name: string
 }
+
+export interface IUpdateProduct {
+    name?: string
+    model?: string
+    bar_code?: string
+    description?: string
+    price?: number
+    isPromotion?: boolean
+    image_url?: string
+    categorie_name?: string
+
+}
 export interface IPropsProduct {
     products: IProduct[]
     setProducts: React.Dispatch<React.SetStateAction<IProduct[]>>
@@ -44,6 +56,9 @@ export interface IPropsProduct {
     cart: IProductCart[]
     setCart: React.Dispatch<React.SetStateAction<IProductCart[]>>
     removeCart: (id:number) => void
+    updateProduct: (data:IUpdateProduct) => void
+    modalProduct: boolean
+    setModalProduct: React.Dispatch<React.SetStateAction<boolean>>
 }
 export interface IChildrenProvider {
     children: ReactNode
