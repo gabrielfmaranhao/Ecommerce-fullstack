@@ -16,3 +16,7 @@ export const ImageUser = styled.img`
     height: 30px;
     border-radius: 50px;
 `
+export const DivAvatar = styled.div`
+    display: flex;
+    flex-direction: column;
+`

@@ -8,6 +8,7 @@ export const RoutesContext = createContext<ISessionProps>({} as ISessionProps);
 export const RoutesProvider = ({children}:IChildrenProvider) => {
     const [modal, setModal] = useState<boolean>(false);
     const [user, setUser] = useState<IUser>();
+    const [button, setButton] = useState<boolean>(false)
     const navigate = useNavigate();
 
 
@@ -47,7 +48,7 @@ export const RoutesProvider = ({children}:IChildrenProvider) => {
         loadUser()
     },[user])
     return (
-        <RoutesContext.Provider value={{modal, setModal, user, singIn, registerUser}}>
+        <RoutesContext.Provider value={{modal, setModal, user, singIn, registerUser , button, setButton}}>
             {children}
         </RoutesContext.Provider>
 

@@ -1,15 +1,19 @@
-import { useContext, useState } from "react"
+import { useContext} from "react"
 import { useNavigate } from "react-router-dom"
 import { ProductsContext } from "../../../../contexts/productsContext"
 import { RoutesContext } from "../../../../contexts/sessionContext"
 import { ContainerButton, ImageUser } from "./style"
-import { motion } from "framer-motion"
+import { Button } from "../../../../components/Form/Button"
 
 
 const Avatar = () => {
     const navigate = useNavigate()
-    const {user} = useContext(RoutesContext)
+    const {user, button, setButton} = useContext(RoutesContext)
     const {modalProduct, setModalProduct} = useContext(ProductsContext)
+    const logout = () => {
+        localStorage.clear()
+        navigate("/session")
+    }
     if(!user) {
         return (
                     
@@ -21,20 +25,26 @@ const Avatar = () => {
     }
     else if (!user.isAdm) {
         return(
-                    
-                <ContainerButton>
-                    <ImageUser src={user.image_url} alt="imagem-user" />
-                </ContainerButton>
+                    <ContainerButton onClick={()=> setButton(!button)}>
+                        <ImageUser src={user.image_url} alt="imagem-user" />
+                    </ContainerButton>
             
         )
     }
     else {
         return(
-            
-                <ContainerButton onClick={() => setModalProduct(!modalProduct)}>
-                    <ImageUser src={user.image_url} alt="imagem-user" />
-                </ContainerButton>
-            
+            <>
+                    <ContainerButton onClick={() => setButton(!button)}>
+                        <ImageUser src={user.image_url} alt="imagem-user" />
+                    </ContainerButton>
+                    { button ? 
+                        <>
+                            <Button b_color="white" color="black" height={40} width={100} name="Add product"/>
+                            <Button b_color="red" color="white" height={40} width={100} name = "logout" onClick={() => logout()}/>
+                            <Button b_color="white" color = "black" height={30} width ={100} name = "test"/>
+                        </>
+                        : <></>}
+        </>
         ) 
     }
 }

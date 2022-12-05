@@ -69,6 +69,8 @@ export interface ISessionProps {
     user: IUser | undefined
     singIn: (data: ILoginUser) => void
     registerUser: (data: IRegisterUser) => void
+    button: boolean
+    setButton: React.Dispatch<React.SetStateAction<boolean>>
 }
 export interface IUser {
     id: string
