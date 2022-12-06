@@ -12,10 +12,8 @@ export const verifyAuthTokenMiddleware = (req: Request, res: Response, next: Nex
 
     jwt.verify(token, process.env.SECRET_KEY as string, (error: any, decode: any)=> {
         if(error) {
-            
             return res.status(401).json({
-                error: error,
-                message: "invalid Token"
+                message: "Invalid token",
             });
         }
         req.user = {adm: decode.isAdm, id: decode.sub}

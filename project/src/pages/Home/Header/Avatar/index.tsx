@@ -39,9 +39,9 @@ const Avatar = () => {
                     </ContainerButton>
                     { button ? 
                         <>
-                            <Button b_color="white" color="black" height={40} width={100} name="Add product"/>
-                            <Button b_color="red" color="white" height={40} width={100} name = "logout" onClick={() => logout()}/>
-                            <Button b_color="white" color = "black" height={30} width ={100} name = "test"/>
+                            <Button b_color="white" color="black" height={40} width={100} name="Add product" onClick={() => setModalProduct(!modalProduct)}/>
+                            <Button b_color="red" color="white" height={40} width={100} name = "Logout" onClick={() => logout()}/>
+                            <Button b_color="white" color = "black" height={30} width ={100} name = "Update"/>
                         </>
                         : <></>}
         </>

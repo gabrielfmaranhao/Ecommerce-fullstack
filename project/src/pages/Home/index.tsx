@@ -16,7 +16,6 @@ import Carts from "./CartP"
 import EmptyCart from "./CartP/emptyCart"
 import Cart from "./CartP/Cart"
 import { IAddProduct } from "../../interfaces/contexts"
-import { motion } from "framer-motion"
 
 const Home = () => {
     const {modalProduct, setModalProduct} = useContext(ProductsContext)
@@ -67,7 +66,5 @@ const Home = () => {
         </>
     )
 }
-
-
 
 export default Home;
